@@ -62,18 +62,6 @@ void printArray(int arr[], int n)
     printf("\n"); 
 } 
 
-/* Function to reverse arr[] from start to end*/
-void reverseArray(int arr[], int start, int end)
-{
-    while (start < end)
-    {
-        int temp = arr[start]; 
-        arr[start] = arr[end];
-        arr[end] = temp;
-        start++;
-        end--;
-    } 
-}
 
 int compare_ints (const void *a, const void *b)
 {

@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
     
     clock_t t;
     t = clock();
-    selction_sort(ptr, num);
+    //selction_sort(ptr, num);//
     //insertion_sort(ptr, num);//
     t = clock() - t;
 
