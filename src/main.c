@@ -21,9 +21,14 @@ int main(int argc, char **argv) {
        
     }
     
+   
+    qsort(ptr, num, sizeof(int), compare_ints);
+   
+    
     clock_t t;
     t = clock();
     selction_sort(ptr, num);
+    //insertion_sort(ptr, num);//
     t = clock() - t;
 
     printf("Elapsed time: %f seconds\n", ((double)t) / CLOCKS_PER_SEC);
