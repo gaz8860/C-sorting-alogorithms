@@ -70,3 +70,38 @@ int compare_ints (const void *a, const void *b)
 
     return (*da > *db - (*da < *db));
 }
+
+
+//takes arr and length of arr as parameters
+// user selects algorithm to test.
+int AlgoChoice(int ptr[], int num)
+    {
+        int algo;
+        printf("Which algorithm would you like to test?\nEnter 1 for selection sort or enter 2 for Insertion sort.\nPlease select: ");
+        scanf("%d", &algo);
+
+        if (algo == 1)
+        {
+            clock_t t;
+            t = clock();
+            selction_sort(ptr, num);
+            t = clock() - t;
+            printf("Elapsed time for selection sort: %f seconds\n", ((double)t) / CLOCKS_PER_SEC);
+        }
+        else if (algo == 2)
+        {
+            clock_t t;
+            t = clock();
+            insertion_sort(ptr, num);
+            t = clock() - t;
+            printf("Elapsed time for selection sort: %f seconds\n", ((double)t) / CLOCKS_PER_SEC);
+        }
+        
+        else
+        {
+            printf("invalid choice. please select 1, 2 or 3");
+            return 0;
+        }
+}
+
+
