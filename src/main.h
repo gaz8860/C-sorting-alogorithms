@@ -20,7 +20,7 @@ void selction_sort(int arr[], int n)
     for (i = 0; i < n; i++)
     {
         min = i;
-        // find the lowest value element in the unsorted portion
+        // find the lest value element in the unsorted portion
         for (j=i+1; j< n; j++)
         {
             if (arr[j] < arr[min])
@@ -52,6 +52,43 @@ void insertion_sort(int arr[], int n)
     }
     
 }
+
+// quicksort
+
+int partition (int arr[], int l, int h) 
+{ 
+    int pivot = arr[h];    // pivot 
+    int i = (l - 1);  // Index of smaller element 
+  
+    for (int j = l; j <= h- 1; j++) 
+    { 
+        // If pivot > element, increment index of element
+        if (arr[j] < pivot) 
+        { 
+            i++;    
+            swap(&arr[i], &arr[j]); 
+        } 
+    } 
+    swap(&arr[i + 1], &arr[h]); 
+    return (i + 1); 
+} 
+  
+/* The main function that implements QuickSort  */
+void quickSort(int arr[], int l, int h) 
+{ 
+    if (l < h) 
+    { 
+        /* pi is the index of the partition, arr[p] is now 
+           at right place */
+        int pi = partition(arr, l, h); 
+  
+        // Separately sort elements before 
+        // partition and after partition 
+        quickSort(arr, l, pi - 1); 
+        quickSort(arr, pi + 1, h); 
+    } 
+} 
+
 
 // print the sorted array
 void printArray(int arr[], int n)   
@@ -85,7 +122,7 @@ int reverse_ints (const void *a, const void *b)
 int AlgoChoice(int ptr[], int num)
     {
         int algo;
-        printf("Which algorithm would you like to test?\nEnter 1 for selection sort or enter 2 for Insertion sort.\nPlease select: ");
+        printf("Which algorithm would you like to test?\nEnter 1 for selection sort, 2 for Insertion sort or 3 for Quick-sort.\nPlease select: ");
         scanf("%d", &algo);
         //selection sort
         if (algo == 1)
@@ -105,6 +142,15 @@ int AlgoChoice(int ptr[], int num)
             t = clock() - t;
             printf("Elapsed time for insertion sort: %f seconds\n", ((double)t) / CLOCKS_PER_SEC);
         }
+        // quicksort
+        else if (algo == 3)
+        {
+            clock_t t;
+            t = clock();
+            quickSort(ptr, 0, num - 1);
+            t = clock() - t;
+            printf("Elapsed time for quick-sort: %f seconds\n", ((double)t) / CLOCKS_PER_SEC);
+        }
         // wrong input
         else
         {
@@ -118,7 +164,7 @@ int AlgoChoice(int ptr[], int num)
 int Data(int arr[], int num)
 {
     int c;
-    printf("How would you like to test the data?\nEnter 1 for random order.Enter 2 for sorted.Enter 3 for reverse sorted.\nPlease select: ");
+    printf("How would you like to test the data?\nEnter 1 for random order, 2 for sorted or 3 for reverse sorted.\nPlease select: ");
     scanf("%d", &c);
     if(c == 1)
     {
