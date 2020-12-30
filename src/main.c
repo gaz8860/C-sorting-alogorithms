@@ -29,6 +29,7 @@ int main() {
         fscanf(dataFile, "%d ", &ptr[i]);
     }
 
-
+    Data(ptr, num);
+    printf("\n");
     AlgoChoice(ptr, num);
     }

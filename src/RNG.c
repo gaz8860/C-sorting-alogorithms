@@ -3,8 +3,6 @@
 #include<time.h>
 
 // Program for generating datasets//
-
-
 int main()
 {
     FILE *dataFile;

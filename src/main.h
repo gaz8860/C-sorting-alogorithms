@@ -71,6 +71,14 @@ int compare_ints (const void *a, const void *b)
     return (*da > *db - (*da < *db));
 }
 
+int reverse_ints (const void *a, const void *b)
+{
+    const int *da = (const int *) a;
+    const int *db = (const int *) b;
+
+    return (*da < *db - (*da > *db));
+}
+
 
 //takes arr and length of arr as parameters
 // user selects algorithm to test.
@@ -79,7 +87,7 @@ int AlgoChoice(int ptr[], int num)
         int algo;
         printf("Which algorithm would you like to test?\nEnter 1 for selection sort or enter 2 for Insertion sort.\nPlease select: ");
         scanf("%d", &algo);
-
+        //selection sort
         if (algo == 1)
         {
             clock_t t;
@@ -88,18 +96,46 @@ int AlgoChoice(int ptr[], int num)
             t = clock() - t;
             printf("Elapsed time for selection sort: %f seconds\n", ((double)t) / CLOCKS_PER_SEC);
         }
+        //insertion sort
         else if (algo == 2)
         {
             clock_t t;
             t = clock();
             insertion_sort(ptr, num);
             t = clock() - t;
-            printf("Elapsed time for selection sort: %f seconds\n", ((double)t) / CLOCKS_PER_SEC);
+            printf("Elapsed time for insertion sort: %f seconds\n", ((double)t) / CLOCKS_PER_SEC);
         }
-        
+        // wrong input
         else
         {
             printf("invalid choice. please select 1, 2 or 3");
             return 0;
         }
 }
+
+//takes arr and length of arr as parameters
+// user selects whether to sort, reverse numbers or keep them random
+int Data(int arr[], int num)
+{
+    int c;
+    printf("How would you like to test the data?\nEnter 1 for random order.Enter 2 for sorted.Enter 3 for reverse sorted.\nPlease select: ");
+    scanf("%d", &c);
+    if(c == 1)
+    {
+        return 0;
+    }
+    else if (c == 2)
+    {
+        qsort(arr, num, sizeof(int), compare_ints);
+    }
+    else if (c == 3)
+    {
+        qsort(arr, num, sizeof(int), reverse_ints);
+    }
+    else
+    {
+        printf("invalid choice. please select 1, 2 or 3");
+        return 0;
+    }
+}
+    
