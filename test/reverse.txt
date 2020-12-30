@@ -1,0 +1,23 @@
+selection sort
+
+10 int: 0s
+1000 int: 0s
+10,000 int: .067s
+100,000 int: 6.993s
+1,000,000 int:
+
+insertion sort
+
+10 int: 0s
+1000 int: 0s
+10,000 int: .074s
+100,000 int: 7.854s
+1,000,000 int:
+
+Quick-sort
+
+10 int: 0s 
+1000 int: 0s
+10,000 int: .002s
+100,000 int: .014s
+1,000,000 int: .191s
