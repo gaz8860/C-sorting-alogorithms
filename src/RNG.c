@@ -13,6 +13,7 @@ int main()
     int num;
     printf("How many numbers would you like to generate?: ");
     scanf("%d", &num);
+    fprintf(dataFile, "%d ", num);
     
     // generates n numbers and writes to file.
     srand(time(0));

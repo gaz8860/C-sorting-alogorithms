@@ -103,5 +103,3 @@ int AlgoChoice(int ptr[], int num)
             return 0;
         }
 }
-
-
