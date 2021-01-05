@@ -9,30 +9,6 @@ void swap(int *p1, int *p2)
 }
 
 
-
-// selection sort
-
-void selction_sort(int arr[], int n)
-{
-    int i, j, min;
-
-    // move through the array
-    for (i = 0; i < n; i++)
-    {
-        min = i;
-        // find the lest value element in the unsorted portion
-        for (j=i+1; j< n; j++)
-        {
-            if (arr[j] < arr[min])
-            {
-                min = j;
-            }  
-        }
-        // swap 
-        swap(&arr[min], &arr[i]);
-    }
-}
-
 void insertion_sort(int arr[], int n)
 {
     int i,j,k;
@@ -90,6 +66,51 @@ void quickSort(int arr[], int l, int h)
 } 
 
 
+
+// heap sort
+
+void heap(int arr[], int n, int i) 
+{
+    // Find largest among root, left child and right child
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+  
+    if (left < n && arr[left] > arr[largest])
+      largest = left;
+  
+    if (right < n && arr[right] > arr[largest])
+      largest = right;
+  
+    // Swap and continue heapifying if root is not largest
+    if (largest != i) {
+      swap(&arr[i], &arr[largest]);
+      heap(arr, n, largest);
+    }
+  }
+
+
+
+// n = length of arr
+void heapSort(int arr[], int n)
+{
+
+    // build the heap//
+    for (int i = n/2 - 1; i >= 0; i--)
+    {
+        heap(arr, n, i);
+    }
+
+    for (int i = n-1; i >= 0; i--)
+    {
+        swap(&arr[0], &arr[i]);
+
+        heap(arr, i, 0);
+    }
+     
+}
+
+
 // print the sorted array
 void printArray(int arr[], int n)   
 { 
@@ -122,25 +143,28 @@ int reverse_ints (const void *a, const void *b)
 int AlgoChoice(int ptr[], int num)
     {
         int algo;
-        printf("Which algorithm would you like to test?\nEnter 1 for selection sort, 2 for Insertion sort or 3 for Quick-sort.\nPlease select: ");
+        printf("Which algorithm would you like to test?\nEnter 1 for Insertion sort, 2 for Heap sort, or 3 for Quick-sort.\nPlease select: ");
         scanf("%d", &algo);
-        //selection sort
+        printf("\n");
+        //Heap sort
         if (algo == 1)
-        {
-            clock_t t;
-            t = clock();
-            selction_sort(ptr, num);
-            t = clock() - t;
-            printf("Elapsed time for selection sort: %f seconds\n", ((double)t) / CLOCKS_PER_SEC);
-        }
-        //insertion sort
-        else if (algo == 2)
         {
             clock_t t;
             t = clock();
             insertion_sort(ptr, num);
             t = clock() - t;
             printf("Elapsed time for insertion sort: %f seconds\n", ((double)t) / CLOCKS_PER_SEC);
+            
+        }
+        //insertion sort
+        else if (algo == 2)
+        {
+            clock_t t;
+            t = clock();
+            heapSort(ptr, num);
+            t = clock() - t;
+            printf("Elapsed time for Heap sort: %f seconds\n", ((double)t) / CLOCKS_PER_SEC);
+            
         }
         // quicksort
         else if (algo == 3)
