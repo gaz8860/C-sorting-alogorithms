@@ -72,15 +72,23 @@ void quickSort(int arr[], int l, int h)
 
 void heap(int arr[], int n, int i) 
 {
-    // Find largest among root, left child and right child
+    
     int largest = i;
     int left = 2 * i + 1;
     int right = 2 * i + 2;
     
+<<<<<<< HEAD
     // check if left is largest in heap
     if (left < n && arr[left] > arr[largest])
       largest = left;
     // check if right largest in heap
+=======
+    // check if left is largest
+    if (left < n && arr[left] > arr[largest])
+      largest = left;
+      
+    // check if right is largest
+>>>>>>> 837758aa92790d66855988cc852ef79f7d77f884
     if (right < n && arr[right] > arr[largest])
       largest = right;
   
