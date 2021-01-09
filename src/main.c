@@ -29,6 +29,7 @@ int main() {
         fscanf(dataFile, "%d ", &ptr[i]);
     }
 
+    // select dataset and alogorithm
     Data(ptr, num);
     printf("\n");
     AlgoChoice(ptr, num);

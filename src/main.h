@@ -36,15 +36,18 @@ int partition (int arr[], int l, int h)
     int pivot = arr[h];    // pivot 
     int i = (l - 1);  // Index of smaller element 
   
+    // iterate from l to h
     for (int j = l; j <= h- 1; j++) 
     { 
         // If pivot > element, increment index of element
         if (arr[j] < pivot) 
         { 
-            i++;    
+            i++;
+            //swap elements index i and j
             swap(&arr[i], &arr[j]); 
         } 
     } 
+    // swap elements //
     swap(&arr[i + 1], &arr[h]); 
     return (i + 1); 
 } 
@@ -54,14 +57,12 @@ void quickSort(int arr[], int l, int h)
 { 
     if (l < h) 
     { 
-        /* pi is the index of the partition, arr[p] is now 
-           at right place */
-        int pi = partition(arr, l, h); 
+        /* par is the index of the partition*/
+        int par = partition(arr, l, h); 
   
-        // Separately sort elements before 
-        // partition and after partition 
-        quickSort(arr, l, pi - 1); 
-        quickSort(arr, pi + 1, h); 
+        // sort elements before partition and after partition 
+        quickSort(arr, l, par - 1); 
+        quickSort(arr, par + 1, h); 
     } 
 } 
 
@@ -75,10 +76,11 @@ void heap(int arr[], int n, int i)
     int largest = i;
     int left = 2 * i + 1;
     int right = 2 * i + 2;
-  
+    
+    // check if left is largest in heap
     if (left < n && arr[left] > arr[largest])
       largest = left;
-  
+    // check if right largest in heap
     if (right < n && arr[right] > arr[largest])
       largest = right;
   
@@ -121,6 +123,7 @@ void printArray(int arr[], int n)
 } 
 
 
+// comparison function for sorting integers low to high
 int compare_ints (const void *a, const void *b)
 {
     const int *da = (const int *) a;
@@ -129,6 +132,7 @@ int compare_ints (const void *a, const void *b)
     return (*da > *db - (*da < *db));
 }
 
+// comparison function for sorting intgers high to low
 int reverse_ints (const void *a, const void *b)
 {
     const int *da = (const int *) a;

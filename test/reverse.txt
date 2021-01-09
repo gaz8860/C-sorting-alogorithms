@@ -4,7 +4,8 @@ insertion sort
 1000 int: 0s
 10,000 int: .074s
 100,000 int: 7.854s
-1,000,000 int:
+1,000,000 int: 746s
+5,000,000 int:
 
 heap sort
 
@@ -13,6 +14,7 @@ heap sort
 10,000 int: .002s
 100,000 int: .019s
 1,000,000 int: 0.243s
+5,000,000 int: 1.805s
 
 Quick-sort
 
@@ -21,3 +23,4 @@ Quick-sort
 10,000 int: .002s
 100,000 int: .014s
 1,000,000 int: .191s
+5,000,000 int: 2.08s
